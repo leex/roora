@@ -7,8 +7,11 @@ class Welcome extends Component {
 
   render() {
     return (
-      <div>
-        Welcome to Roora
+      <div className="pt-2">
+        <div className="content">
+          <p>Haere mai, here you will be able to actively participate in discussions about hemp, medical cannabis and recreational cannabis use in Aotearoa.</p>
+          <p>These discussions are linked via the council to real outcomes - so our discussions today become real policy tomorrow.</p>
+        </div>
       </div>
     )
   }

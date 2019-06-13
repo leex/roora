@@ -1,0 +1,1 @@
+export { default } from './news-container.js';
