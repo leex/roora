@@ -64,7 +64,7 @@ class App extends Component {
             </ButtonGroup>
           </Navbar>
           <div id="header" className="row">
-            <div className="col-3"><img src={Logo} style={{ width: '50px', height: 'auto' }} /></div>
+            <div className="col-3"><img src={Logo} alt="logo" style={{ width: '50px', height: 'auto' }} /></div>
             <div className="col-9"><h1>Rō Ora</h1></div>
           </div>
 

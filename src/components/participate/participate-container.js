@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ParticipationForm from '../participation-form';
 class Participate extends Component {
 
   componentDidMount() {
@@ -9,7 +10,7 @@ class Participate extends Component {
     return (
       <div id="participate">
         <h2>Rō Ora Participate</h2>
-        
+        <ParticipationForm />
         <div>
           <h3>Register to vote</h3>
           <p>If you want to vote in the 2020 cannabis referendum you need to be registered to vote.</p>
@@ -21,7 +22,7 @@ class Participate extends Component {
             <li>The referendum will be held at the same time as the 2020 general election.</li>
             <li>The referendum will not be binding, although the current government advertises it as such.</li>
             <li>The referendum will make it legal to consume cannabis for medical and recreational use to some degree.</li>
-            <li>There will be an age limit for those purchasing cannabis.</li>
+            <li>There will be an age limit of 20 for those purchasing cannabis.</li>
           </ul>
         </div>
       </div>

@@ -27,7 +27,7 @@ class News extends Component {
                     <p>Legislative changes related to the referendum will come into effect on 1st November 2020 unless actively repealed by the standing government (in the case of a no vote).</p>
                   </div>
                   <p className="mt-2">
-                    <a href="#">
+                    <a href="/about">
                       Learn More
                       <i className="fas fa-angle-right" />
                     </a>
@@ -43,7 +43,7 @@ class News extends Component {
                     <p>As expected, the text is that which has been publically available for some weeks now following the collaboration with Rō ora.</p>
                   </div>
                   <p className="mt-2">
-                    <a href="#">
+                    <a href="/about">
                       Learn More
                       <i className="fas fa-angle-right" />
                     </a>
@@ -59,7 +59,7 @@ class News extends Component {
                     <p>As of September 2019 a membership of over 480,000 members has enabled the group to write the full legislation for the referendum.</p>
                   </div>
                   <p className="mt-2">
-                    <a href="#">
+                    <a href="/about">
                       Learn More
                       <i className="fas fa-angle-right" />
                     </a>
