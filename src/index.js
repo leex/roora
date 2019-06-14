@@ -4,6 +4,8 @@ import './index.css';
 
 import App from './components/app';
 
+import Login from './components/login';
+
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -15,6 +17,7 @@ ReactDOM.render(
           <Route exact path="/about" component={App} />
           <Route exact path="/news" component={App} />
           <Route exact path="/participate" component={App} />
+          <Route exact path="/login" component={Login} />
       </div>
   </Router>, document.getElementById('root'));
 

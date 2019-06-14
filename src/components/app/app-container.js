@@ -16,7 +16,7 @@ import Button from 'react-bootstrap/Button';
 
 import './app.css';
 
-import Logo from '../../assets/cannabis_leaf.png';
+import Logo from '../../assets/cannabis_logo.png';
 
 class App extends Component {
   componentDidMount() { }
@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <section id="" className="p-3">
+        <section id="page">
           <Navbar
             fixed="bottom"
             bg="light"
@@ -63,13 +63,12 @@ class App extends Component {
                 </Button>
             </ButtonGroup>
           </Navbar>
-          <div id="header" className="row">
-            <div className="col-3"><img src={Logo} alt="logo" style={{ width: '50px', height: 'auto' }} /></div>
-            <div className="col-9"><h1>Rō Ora</h1></div>
+          <div id="header" className="pb-2">
+            <div className="logo"><img src={Logo} alt="logo" className="" style={{ width: '50px', height: 'auto' }} /></div>
+            <div className="col"><h1>Rō&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ora</h1></div>
+            <div className="">Talking cannabis in Aotearoa</div>
           </div>
-
-          <div className="">Talking cannabis in Aotearoa</div>
-          <div id="content">
+          <div id="content" className="p-3">
             <Route path="/" exact component={Welcome} />
             <Route path="/about" component={About} />
             <Route path="/news" component={News} />

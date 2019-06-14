@@ -1,3 +1,24 @@
 .subtitle {
   font-size: 1.3rem;
 }
+
+#header {
+  position: relative;
+  text-align: center;
+  background: #acf3ae;
+  padding-top: 1.3rem!important;
+}
+
+#header .logo {
+  width: 50px;
+  height: auto;
+  position: absolute;
+  left: 119px;
+  top: 10px;
+}
+
+#header h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0;
+}

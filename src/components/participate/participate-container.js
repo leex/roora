@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 
 import ParticipationForm from '../participation-form';
+import AuthenticationForm from '../authentication-form';
+
+import AuthHelperMethods from "../../helpers/auth/AuthHelperMethods";
+
 class Participate extends Component {
+  Auth = new AuthHelperMethods();
 
   componentDidMount() {
   }
 
   render() {
+    let isLoggedIn = this.Auth.loggedIn();
+    let userForm = <AuthenticationForm />;
+
+    if (isLoggedIn) {
+      userForm = <ParticipationForm />;
+    }
+
     return (
       <div id="participate">
-        <h2>Rō Ora Participate</h2>
-        <ParticipationForm />
+        <h2>Participate</h2>
+        {userForm}
+
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+
         <div>
           <h3>Register to vote</h3>
           <p>If you want to vote in the 2020 cannabis referendum you need to be registered to vote.</p>
