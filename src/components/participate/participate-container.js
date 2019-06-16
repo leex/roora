@@ -4,6 +4,19 @@ import ParticipationForm from '../participation-form';
 import AuthenticationForm from '../authentication-form';
 
 import AuthHelperMethods from "../../helpers/auth/AuthHelperMethods";
+import useStore from "../../helpers/store.js";
+
+function UserInformation(props) {
+  const userDetails = useStore();
+
+  return <div>
+    <div><p>You are logged in.</p></div>
+    <div>Name: {userDetails.name}</div>
+    <div>Region: {userDetails.region || 'Unknown'}</div>
+    <div>Registered Voter: {userDetails.voter ? 'Yes' : 'No'}</div>
+    <ParticipationForm />
+  </div>;
+}
 
 class Participate extends Component {
   Auth = new AuthHelperMethods();
@@ -16,7 +29,8 @@ class Participate extends Component {
     let userForm = <AuthenticationForm />;
 
     if (isLoggedIn) {
-      userForm = <ParticipationForm />;
+      userForm = <UserInformation />;
+      // userForm = <ParticipationForm />;
     }
 
     return (

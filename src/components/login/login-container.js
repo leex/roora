@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 /* We want to import our 'AuthHelperMethods' component in order to send a login request */
 import AuthHelperMethods from '../../helpers/auth/AuthHelperMethods';
-import { Link } from 'react-router-dom';
 import './login.css'
 
 class Login extends Component {

@@ -1,5 +1,7 @@
 import decode from 'jwt-decode';
 
+import useStore from "../store.js";
+
 export default class AuthHelperMethods {
 
   // Initializing important variables
@@ -17,19 +19,9 @@ export default class AuthHelperMethods {
     }).then(res => {
 
       this.setToken(res.token) // Setting the token in localStorage
+
       return Promise.resolve(res);
     })
-  }
-
-  getMemberDetails = () => {
-    let data = {
-      id: '123123',
-      name: null,
-      agentId: '123123',
-      agentName: 'Alex Jacobsen'
-    };
-
-    return data;
   }
 
   loggedIn = () => {

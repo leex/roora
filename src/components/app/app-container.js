@@ -18,6 +18,23 @@ import './app.css';
 
 import Logo from '../../assets/cannabis_logo.png';
 
+import useStore from "../../helpers/store.js";
+
+function UserNav() {
+  const actions = useStore(state => state.actions);
+  const name = useStore(state => state.name);
+
+  actions.getDetails();
+
+  const id = useStore(state => state.id);
+
+  if (id) {
+    return <div>LOGGED IN</div>;
+  }
+
+  return <div>LOGGED OUT</div>;
+}
+
 class App extends Component {
   componentDidMount() { }
 
@@ -32,40 +49,43 @@ class App extends Component {
             className="p-0"
             role="navigation"
           >
-            <ButtonGroup
-              size=""
-              className="row m-0"
-              style={{ width: "100%" }}
-            >
-              <Button href="/" variant="primary" className="rounded-0 col-6">
-                Home
-                </Button>
-              <Button
-                href="/about/"
-                variant="danger"
-                className="rounded-0 col-6"
+            <div>
+              <UserNav />
+              <ButtonGroup
+                size=""
+                className="row m-0"
+                style={{ width: "100%" }}
               >
-                About
-                </Button>
-              <Button
-                href="/participate/"
-                variant="warning"
-                className="rounded-0 col-6"
-              >
-                Participate
-                </Button>
-              <Button
-                href="/news/"
-                variant="success"
-                className="rounded-0 col-6"
-              >
-                NEWS
-                </Button>
-            </ButtonGroup>
+                <Button href="/" variant="primary" className="rounded-0 col-6">
+                  Home
+                  </Button>
+                <Button
+                  href="/about/"
+                  variant="danger"
+                  className="rounded-0 col-6"
+                >
+                  About
+                  </Button>
+                <Button
+                  href="/participate/"
+                  variant="warning"
+                  className="rounded-0 col-6"
+                >
+                  Participate
+                  </Button>
+                <Button
+                  href="/news/"
+                  variant="success"
+                  className="rounded-0 col-6"
+                >
+                  NEWS
+                  </Button>
+              </ButtonGroup>
+            </div>
           </Navbar>
           <div id="header" className="pb-2">
             <div className="logo"><img src={Logo} alt="logo" className="" style={{ width: '50px', height: 'auto' }} /></div>
-            <div className="col"><h1>Rō&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ora</h1></div>
+            <div className="col"><h1>Rau&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ora</h1></div>
             <div className="">Talking cannabis in Aotearoa</div>
           </div>
           <div id="content" className="p-3">
