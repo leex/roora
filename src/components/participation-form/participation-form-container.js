@@ -19,7 +19,7 @@ function RegistrationPanel(props) {
 function RegionPanel(props) {
     const state = useStore();
 
-    if (state.region) {
+    if (state.region !== '') {
         return <RegionConfirmed region={state.region} />;
     } else {
         return <ConfirmRegionButton onClick={state.actions.confirmRegion} />;

@@ -1,7 +1,5 @@
 import decode from 'jwt-decode';
 
-import useStore from "../store.js";
-
 export default class AuthHelperMethods {
 
   // Initializing important variables

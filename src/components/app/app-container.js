@@ -2,102 +2,125 @@ import React, { Component } from "react";
 
 import Welcome from "../welcome";
 
-import About from '../about';
+import About from "../about";
 
-import News from '../news';
+import News from "../news";
 
-import Participate from '../participate';
+import Participate from "../participate";
+
+import AlertDismissible from "../alert-dismissable";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Navbar from 'react-bootstrap/Navbar';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
+import Navbar from "react-bootstrap/Navbar";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 
-import './app.css';
+import { Link } from "react-router-dom";
 
-import Logo from '../../assets/cannabis_logo.png';
+import "./app.css";
+
+import Logo from "../../assets/cannabis_logo.png";
 
 import useStore from "../../helpers/store.js";
 
+function LoggedInMemberView() {
+    return <AlertDismissible dismissible variant="warning">You are logged in.</AlertDismissible>;
+}
+
+function LoggedInAgentView() {
+    return <AlertDismissible dismissible variant="info">You are an agent.</AlertDismissible>;
+}
+
+function LoggedInAdminView() {
+    return <AlertDismissible dismissible variant="primary">You are an admin.</AlertDismissible>;
+}
+
 function UserNav() {
-  const actions = useStore(state => state.actions);
-  const name = useStore(state => state.name);
+    const actions = useStore(state => state.actions);
 
-  actions.getDetails();
+    actions.getDetails();
 
-  const id = useStore(state => state.id);
+    const loaded = useStore(state => state.loaded);
+    const admin = useStore(state => state.admin);
+    const agent = useStore(state => state.agent);
 
-  if (id) {
-    return <div>LOGGED IN</div>;
-  }
+    let output = (
+        <div>
+            {loaded === true ? <LoggedInMemberView /> : ""}
+            {agent === true ? <LoggedInAgentView /> : ""}
+            {admin === true ? <LoggedInAdminView /> : ""}
+        </div>
+    );
 
-  return <div>LOGGED OUT</div>;
+    return output;
 }
 
 class App extends Component {
-  componentDidMount() { }
+    componentDidMount() {}
 
-  render() {
-    return (
-      <Router>
-        <section id="page">
-          <Navbar
-            fixed="bottom"
-            bg="light"
-            variant="light"
-            className="p-0"
-            role="navigation"
-          >
-            <div>
-              <UserNav />
-              <ButtonGroup
-                size=""
-                className="row m-0"
-                style={{ width: "100%" }}
-              >
-                <Button href="/" variant="primary" className="rounded-0 col-6">
-                  Home
-                  </Button>
-                <Button
-                  href="/about/"
-                  variant="danger"
-                  className="rounded-0 col-6"
-                >
-                  About
-                  </Button>
-                <Button
-                  href="/participate/"
-                  variant="warning"
-                  className="rounded-0 col-6"
-                >
-                  Participate
-                  </Button>
-                <Button
-                  href="/news/"
-                  variant="success"
-                  className="rounded-0 col-6"
-                >
-                  NEWS
-                  </Button>
-              </ButtonGroup>
-            </div>
-          </Navbar>
-          <div id="header" className="pb-2">
-            <div className="logo"><img src={Logo} alt="logo" className="" style={{ width: '50px', height: 'auto' }} /></div>
-            <div className="col"><h1>Rau&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ora</h1></div>
-            <div className="">Talking cannabis in Aotearoa</div>
-          </div>
-          <div id="content" className="p-3">
-            <Route path="/" exact component={Welcome} />
-            <Route path="/about" component={About} />
-            <Route path="/news" component={News} />
-            <Route path="/participate" component={Participate} />
-          </div>
-        </section>
-      </Router >
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <section id="page">
+                    <Navbar
+                        fixed="bottom"
+                        bg="light"
+                        variant="light"
+                        className="p-0"
+                        role="navigation"
+                    >
+                        <div>
+                            <UserNav />
+                            <ButtonGroup
+                                size=""
+                                className="row m-0"
+                                style={{ width: "100%" }}
+                            >
+                                <Link to="/" className="rounded-0 col-6">
+                                    <Button variant="primary">Home</Button>
+                                </Link>
+                                <Link to="/about" className="rounded-0 col-6">
+                                    <Button variant="danger">About</Button>
+                                </Link>
+                                <Link
+                                    to="/participate"
+                                    className="rounded-0 col-6"
+                                >
+                                    <Button variant="warning">
+                                        Participate
+                                    </Button>
+                                </Link>
+                                <Link to="/news" className="rounded-0 col-6">
+                                    <Button variant="success">NEWS</Button>
+                                </Link>
+                            </ButtonGroup>
+                        </div>
+                    </Navbar>
+                    <div id="header" className="pb-2">
+                        <div className="logo">
+                            <img
+                                src={Logo}
+                                alt="logo"
+                                className=""
+                                style={{ width: "50px", height: "auto" }}
+                            />
+                        </div>
+                        <div className="col">
+                            <h1>Rau&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ora</h1>
+                        </div>
+                        <div className="">Talking cannabis in Aotearoa</div>
+                    </div>
+                    <div id="content" className="p-3">
+                        <Route path="/" exact component={Welcome} />
+                        <Route path="/about" component={About} />
+                        <Route path="/news" component={News} />
+                        <Route path="/participate" component={Participate} />
+                    </div>
+                </section>
+            </Router>
+        );
+    }
 }
 
 export default App;

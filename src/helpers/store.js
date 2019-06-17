@@ -16,13 +16,13 @@ function confirmRegion(set, region) {
   }));
 }
 
-function getUserDetails(set, userId) {
+function getUserDetails(set, loaded) {
   var Auth = new AuthHelperMethods();
   let token = Auth.getToken();
 
-  // let userId = useStore('id');
+  // let loaded = useStore('id');
 
-  if (userId !== null) {
+  if (loaded) {
     return;
   }
 
@@ -31,16 +31,16 @@ function getUserDetails(set, userId) {
   axios.get('/appdata', { headers: { "Authorization" : `Bearer ${token}` } })
   .then(function (response) {
     // handle success
-    console.log(response);
     let userData = response.data.user;
 
-    // set(state => ({ region: userData.region, name: 'JNDS' }));
     set(state => ({
       name: userData.name,
       region: userData.region,
-      id: userData.id,
-      voter: false
-      // voter: userData.voter
+      loaded: true,
+      voter: userData.vote,
+      invited: userData.invited,
+      agent: userData.agent,
+      admin: userData.admin
     }));
   })
   .catch(function (error) {
@@ -53,15 +53,18 @@ function getUserDetails(set, userId) {
 }
 
 const [useStore] = create((set, get) => ({
-  id: null,
-  name: 'Unknown',
+  loaded: false,
+  name: '',
   actions: {
-    getDetails: () => getUserDetails(set, get().id),
+    getDetails: () => getUserDetails(set, get().loaded),
     confirmRegistration: () => confirmRegistration(set),
     confirmRegion: (event) => confirmRegion(set, event)
   },
-  region: null,
-  voter: false
+  region: '',
+  voter: false,
+  invited: '',
+  agent: false,
+  admin: false
 }))
 
 export default useStore;
