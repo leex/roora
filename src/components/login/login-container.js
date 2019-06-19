@@ -4,6 +4,10 @@ import React, { Component } from "react";
 import AuthHelperMethods from '../../helpers/auth/AuthHelperMethods';
 import './login.css'
 
+import Button from "react-bootstrap/Button";
+
+import Form from "react-bootstrap/Form";
+
 class Login extends Component {
 
     /* In order to utilize our authentication methods within the AuthService class, we want to instantiate a new object */
@@ -55,21 +59,9 @@ class Login extends Component {
                             <h1>Login</h1>
                         </div>
                         <form className="">
-                            <input
-                                className="form-item"
-                                placeholder="Username"
-                                name="username"
-                                type="text"
-                                onChange={this._handleChange}
-                            />
-                            <input
-                                className="form-item"
-                                placeholder="Password"
-                                name="password"
-                                type="password"
-                                onChange={this._handleChange}
-                            />
-                            <button className="form-submit" onClick={this.handleFormSubmit}>Login</button>
+                            <Form.Control onChange={this._handleChange} type="text" name="username" placeholder="invite code" />
+                            <Form.Control onChange={this._handleChange} type="password" name="password" placeholder="password" />
+                            <Button className="form-submit" onClick={this.handleFormSubmit}>Login</Button>
                         </form>
                     </div>
                     {/* <div className="signiture">

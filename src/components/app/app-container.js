@@ -6,7 +6,10 @@ import About from "../about";
 
 import News from "../news";
 
+import Login from '../login';
+
 import Participate from "../participate";
+import Invite from "../invite";
 
 import AlertDismissible from "../alert-dismissable";
 
@@ -38,6 +41,14 @@ function LoggedInAdminView() {
     return <AlertDismissible dismissible variant="primary">You are an admin.</AlertDismissible>;
 }
 
+function AdminInviteLink() {
+    return (
+        <Link to="/invite" className="rounded-0 col-6">
+            <Button variant="primary">Invite User</Button>
+        </Link>
+    )
+}
+
 function UserNav() {
     const actions = useStore(state => state.actions);
 
@@ -52,6 +63,7 @@ function UserNav() {
             {loaded === true ? <LoggedInMemberView /> : ""}
             {agent === true ? <LoggedInAgentView /> : ""}
             {admin === true ? <LoggedInAdminView /> : ""}
+            {admin === true ? <AdminInviteLink /> : ""}
         </div>
     );
 
@@ -59,8 +71,8 @@ function UserNav() {
 }
 
 class App extends Component {
-    Auth = new AuthHelperMethods
-    isLoggedIn = this.Auth.loggedIn();
+    Auth = new AuthHelperMethods()
+    isLoggedIn = this.Auth.loggedIn()
 
     componentDidMount() {}
 
@@ -121,6 +133,8 @@ class App extends Component {
                         <Route exact path="/about" component={About} />
                         <Route exact path="/news" component={News} />
                         <Route exact path="/participate" component={Participate} />
+                        <Route exact path="/invite" component={Invite} />
+                        <Route exact path="/login" component={Login} />
                     </div>
                 </section>
             </Router>

@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import Button from "react-bootstrap/Button";
+
+import { Link } from "react-router-dom";
+
 class AuthenticationForm extends Component {
     constructor(props) {
         super(props);
@@ -22,10 +26,13 @@ class AuthenticationForm extends Component {
         
         var show_login_form = (!this.state.login && !this.state.join);
 
-        let login_join_form;
-
         if (show_login_form) {
-            login_join_form = '<div id="login"><p>If you already have an account please login.</p><Button onClick={this.goLogin}>login</Button></div>';
+            return (
+                <Link to="/login" className="rounded-0 col-6">
+                    <Button variant="primary">Login</Button>
+                </Link>
+            )
+            // login_join_form = '<div id="login"><p>If you already have an account please login.</p><Button onClick={this.goLogin}>login</Button></div>';
 
             // login_join_form += <div id="join">
             //     <React.Fragment>
@@ -34,11 +41,11 @@ class AuthenticationForm extends Component {
             //         <Button onClick={this.goJoin}>join</Button>
             //     </React.Fragment>
             // </div>;
-            console.log(login_join_form);
+            // console.log(login_join_form);
         }
 
         return (
-            <div id="authentication_form" className="card" dangerouslySetInnerHTML={{ __html: login_join_form }}>
+            <div id="authentication_form" className="card">
                 
             </div>
         );

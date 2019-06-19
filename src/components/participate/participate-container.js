@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ParticipationForm from '../participation-form';
 import AuthenticationForm from '../authentication-form';
+import Logout from '../logout';
 
 import AuthHelperMethods from "../../helpers/auth/AuthHelperMethods";
 import useStore from "../../helpers/store.js";
@@ -58,6 +59,9 @@ class Participate extends Component {
             <li>There will be an age limit of 20 for those purchasing cannabis.</li>
           </ul>
         </div>
+        <Logout />
+        <br/><br/><br/>
+        <br/><br/><br/>
       </div>
     )
   }
