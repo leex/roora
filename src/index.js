@@ -11,13 +11,13 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.REACT_APP_SUBDIR}>
       <div>
-          <Route exact path="/" component={App} />
-          <Route exact path="/about" component={App} />
-          <Route exact path="/news" component={App} />
-          <Route exact path="/participate" component={App} />
-          <Route exact path="/login" component={Login} />
+          <Route path="/" exact component={App} />
+          <Route path="/about" component={App} />
+          <Route path="/news" component={App} />
+          <Route path="/participate" component={App} />
+          <Route path="/login" component={Login} />
       </div>
   </Router>, document.getElementById('root'));
 

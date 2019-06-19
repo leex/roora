@@ -7,9 +7,8 @@ export default class AuthHelperMethods {
   login = (username, password) => {
 
     // Get a token from api server using the fetch api
-    return this.fetch(`/log-in`, {
+    return this.fetch(process.env.REACT_APP_ASYNC_PATH + `/log-in`, {
       method: 'POST',
-      port: 3001,
       body: JSON.stringify({
         username,
         password

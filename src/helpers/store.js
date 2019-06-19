@@ -28,7 +28,7 @@ function getUserDetails(set, loaded) {
 
   console.log(token);
 
-  axios.get('/appdata', { headers: { "Authorization" : `Bearer ${token}` } })
+  axios.get(process.env.REACT_APP_ASYNC_PATH + '/appdata', { headers: { "Authorization" : `Bearer ${token}` } })
   .then(function (response) {
     // handle success
     let userData = response.data.user;

@@ -24,6 +24,8 @@ import Logo from "../../assets/cannabis_logo.png";
 
 import useStore from "../../helpers/store.js";
 
+import AuthHelperMethods from "../../helpers/auth/AuthHelperMethods";
+
 function LoggedInMemberView() {
     return <AlertDismissible dismissible variant="warning">You are logged in.</AlertDismissible>;
 }
@@ -57,11 +59,14 @@ function UserNav() {
 }
 
 class App extends Component {
+    Auth = new AuthHelperMethods
+    isLoggedIn = this.Auth.loggedIn();
+
     componentDidMount() {}
 
     render() {
         return (
-            <Router>
+            <Router basename={process.env.REACT_APP_SUBDIR}>
                 <section id="page">
                     <Navbar
                         fixed="bottom"
@@ -71,7 +76,7 @@ class App extends Component {
                         role="navigation"
                     >
                         <div>
-                            <UserNav />
+                            {this.isLoggedIn === true ? <UserNav /> : ''}
                             <ButtonGroup
                                 size=""
                                 className="row m-0"
@@ -112,10 +117,10 @@ class App extends Component {
                         <div className="">Talking cannabis in Aotearoa</div>
                     </div>
                     <div id="content" className="p-3">
-                        <Route path="/" exact component={Welcome} />
-                        <Route path="/about" component={About} />
-                        <Route path="/news" component={News} />
-                        <Route path="/participate" component={Participate} />
+                        <Route exact path="/" component={Welcome} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/news" component={News} />
+                        <Route exact path="/participate" component={Participate} />
                     </div>
                 </section>
             </Router>

@@ -11,7 +11,7 @@ function UserInformation(props) {
 
   return <div>
     <div><p>You are logged in.</p></div>
-    <div>Name: {userDetails.name}</div>
+    <div>Name: {userDetails.name || 'Unknown'}</div>
     <div>Region: {userDetails.region || 'Unknown'}</div>
     <div>Registered Voter: {userDetails.voter ? 'Yes' : 'No'}</div>
     <ParticipationForm />
@@ -20,15 +20,15 @@ function UserInformation(props) {
 
 class Participate extends Component {
   Auth = new AuthHelperMethods();
+  isLoggedIn = this.Auth.loggedIn();
 
   componentDidMount() {
   }
 
   render() {
-    let isLoggedIn = this.Auth.loggedIn();
     let userForm = <AuthenticationForm />;
 
-    if (isLoggedIn) {
+    if (this.isLoggedIn) {
       userForm = <UserInformation />;
       // userForm = <ParticipationForm />;
     }

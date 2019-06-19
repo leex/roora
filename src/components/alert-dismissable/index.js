@@ -1,0 +1,1 @@
+export { default } from './alert-dismissable-container.js';
